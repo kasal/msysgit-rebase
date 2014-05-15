@@ -25,7 +25,8 @@ bud
 pick db40d88 Makefile: do not depend on curl-config
 #####U: junio is going to merge early in 2.1: http://article.gmane.org/gmane.comp.version-control.msysgit/20130
 pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
-#####U: submitted 2014-05-14, seems accepted modulo s/-i/-I/, see
+squash d7555a2
+#####U: submitted 2014-05-14, seems accepted -- s/-i/-I/, also in commit message
 ### http://article.gmane.org/gmane.comp.version-control.git/248934
 mark junio/notyet
 
