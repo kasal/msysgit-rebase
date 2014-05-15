@@ -11,9 +11,11 @@ mark junio/master
 
 bud
 pick cbc60b6 git tag --contains : avoid stack overflow
+# -- there was conflict for cbc60b6, next time, use the rebased one
 pick 784f4b6 Update SVN.pm
 pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
 pick a08e803 MSVC: link dynamically to the CRT
+# -- there was conflict for a08e803, next time, use the rebased one
 mark junio/next
 
 bud
@@ -28,6 +30,7 @@ pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
 squash d7555a2
 #####U: submitted 2014-05-14, seems accepted -- s/-i/-I/, also in commit message
 ### http://article.gmane.org/gmane.comp.version-control.git/248934
+# -- next time, use the squashed one
 mark junio/notyet
 
 ### dropped:
