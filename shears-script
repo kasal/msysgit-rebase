@@ -3,6 +3,36 @@ mark onto
 
 ###  The upstream status is denoted by an "#####U:" comment *below* the pick command.
 
+# First, already accepted patches:
+
+bud
+pick 06bdc23 config.c: mark die_bad_number as NORETURN
+mark junio/master
+
+bud
+pick cbc60b6 git tag --contains : avoid stack overflow
+pick 784f4b6 Update SVN.pm
+pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
+pick a08e803 MSVC: link dynamically to the CRT
+mark junio/next
+
+bud
+pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
+# was: 9e9b802 Windows: Always normalize paths to Windows-style
+mark junio/pu
+
+bud
+pick db40d88 Makefile: do not depend on curl-config
+#####U: junio is going to merge early in 2.1: http://article.gmane.org/gmane.comp.version-control.msysgit/20130
+pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
+#####U: submitted 2014-05-14, seems accepted modulo s/-i/-I/, see
+### http://article.gmane.org/gmane.comp.version-control.git/248934
+mark junio/notyet
+
+### dropped:
+#pick 31f5ab1 grep -I: do not bother to read known-binary files
+#####U: drop: http://article.gmane.org/gmane.comp.version-control.msysgit/20225
+
 # Branch: unicode
 bud
 pick 64341b5 Support Unicode console output on Windows
@@ -124,16 +154,6 @@ pick b29f215 Handle the branch.<name>.rebase value 'interactive'
 pick 11cce70 Teach 'git remote' that the config var branch.*.rebase can be 'interactive'
 mark pull-rebase-interactive
 
-# Branch: grep-fixes
-bud
-pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
-#####U: submitted 2014-05-14, seems accepted modulo s/-i/-I/, see
-### http://article.gmane.org/gmane.comp.version-control.git/248934
-
-#pick 31f5ab1 grep -I: do not bother to read known-binary files
-#####U: drop: http://article.gmane.org/gmane.comp.version-control.msysgit/20225
-mark grep-fixes
-
 # Branch: some-CR-fixes
 bud
 pick bbfce9b submodule: Fix t7400, t7405, t7406 for msysGit
@@ -205,42 +225,11 @@ pick bc6bd8e wincred: add install target and avoid overwriting configured variab
 # the rest is cosmetics and has to go
 mark install-wincred
 
-# Branch: msvc-link-crt
-bud
-pick ff9fa75 MSVC: link dynamically to the CRT
-#####U: in junio/next as a08e803 MSVC: link dynamically to the CRT
-mark msvc-link-crt
-
-# Branch: normalize-win-paths
-bud
-pick 9e9b802 Windows: Always normalize paths to Windows-style
-#####U: in junio/pu as 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
-mark normalize-win-paths
-
-# Branch: poll-busy-wait
-bud
-pick d82d0d2 Sleep 1 millisecond in poll() to avoid busy wait
-#####U: in junio/next as 76e7c8a
-mark poll-busy-wait
-
 # Branch: msysgit/tip4commit
 bud
 pick c70bf30 Add a README.md
 #####U: do not upstream
 mark msysgit/tip4commit
-
-# Branch: RomanBelinsky/master
-bud
-pick e2ffc77 Update SVN.pm
-#####U: in junio/next as 784f4b6
-mark RomanBelinsky/master
-
-# Branch: tag-contains
-bud
-pick f172da6 git tag --contains : avoid stack overflow
-pick cec0b8e Touch up the comments in the 'tag-contains' branch
-#####U: in junio/next, squashed to one commit cbc60b6
-mark tag-contains
 
 # Branch: kb/hashmap-v5-minimal
 bud
@@ -279,6 +268,10 @@ pick 104d4e8 Win32: support long paths
 mark kblees/kb/long-paths-v2
 
 bud
+merge refs/rewritten/junio/master
+merge refs/rewritten/junio/next
+merge refs/rewritten/junio/pu
+merge refs/rewritten/junio/notyet
 merge refs/rewritten/unicode -C 547db2e # Merge 'unicode' into HEAD
 merge refs/rewritten/hide-dotgit -C 16180e4 # Merge 'hide-dotgit' into HEAD
 merge refs/rewritten/4fd0166 -C a565692 # Merge 'home' into HEAD
@@ -292,7 +285,6 @@ merge refs/rewritten/gitweb-syntax -C 6635333 # Merge 'gitweb-syntax' into HEAD
 merge refs/rewritten/jberezanski/wincred-sso-r2 -C 2398365 # Merge 'jberezanski/wincred-sso-r2' into HEAD
 merge refs/rewritten/send-email -C ab62c69 # Merge 'send-email' into HEAD
 merge refs/rewritten/pull-rebase-interactive -C 5322eac # Merge 'pull-rebase-interactive' into HEAD
-merge refs/rewritten/grep-fixes -C 5a9b308 # Merge 'grep-fixes' into HEAD
 merge refs/rewritten/some-CR-fixes -C cbdee02 # Merge branch 'some-CR-fixes'
 merge refs/rewritten/win-tests-fixes -C acdd2fc # Merge 'win-tests-fixes' into HEAD
 merge refs/rewritten/remote-hg-prerequisites -C b7593f8 # Merge 'remote-hg-prerequisites' into HEAD
@@ -301,12 +293,7 @@ merge refs/rewritten/stash-reflog -C e598900 # Merge 'stash-reflog' into HEAD
 merge refs/rewritten/fix-externals -C 4af426c # Merge 'fix-externals' into HEAD
 merge refs/rewritten/fix-is-exe -C 618f814 # Merge 'fix-is-exe' into HEAD
 merge refs/rewritten/install-wincred -C a02dd25 # Merge 'install-wincred' into HEAD
-merge refs/rewritten/msvc-link-crt -C 8f9a5f3 # Merge 'msvc-link-crt' into HEAD
-merge refs/rewritten/normalize-win-paths -C 43e098b # Merge 'normalize-win-paths' into HEAD
-merge refs/rewritten/poll-busy-wait -C d774bfc # Merge 'poll-busy-wait' into HEAD
 merge refs/rewritten/msysgit/tip4commit -C 8947aba # Merge pull request #115 from msysgit/tip4commit
-merge refs/rewritten/RomanBelinsky/master -C 58af5a8 # Merge pull request #126 from RomanBelinsky/master
-merge refs/rewritten/tag-contains -C 0853bed # Merge branch 'tag-contains'
 merge refs/rewritten/kb/hashmap-v5-minimal -C 2588ee0 # Merge branch 'kb/hashmap-v5-minimal' into kb/fscache-v4-t1.8.5
 merge refs/rewritten/t-b/sideband-bug -C 9860bbb # Merge remote-tracking branch 't-b/sideband-bug'
 merge refs/rewritten/kasal/tests-no-posix -C 70d7fea # Merge pull request #181 from kasal/tests-no-posix
@@ -314,13 +301,7 @@ merge refs/rewritten/kasal/tests-no-posix -C 70d7fea # Merge pull request #181 f
 merge refs/rewritten/kblees/kb/fscache-v4-tentative-1.8.5 -C 231f538 # Merge remote-tracking branch 'kblees/kb/fscache-v4-tentative-1.8.5' into thicket-1.8.5.2
 merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #122 from kblees/kb/long-paths-v2
 
-pick db40d88 Makefile: do not depend on curl-config
-#####U: junio is going to merge early in 2.1: http://article.gmane.org/gmane.comp.version-control.msysgit/20130
-
-pick 12949d0 config.c: mark die_bad_number as NORETURN
-#####U: comes from junio/master 06bdc23
-
-cleanup  unicode hide-dotgit 4fd0166 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive grep-fixes some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe install-wincred msvc-link-crt normalize-win-paths poll-busy-wait msysgit/tip4commit RomanBelinsky/master tag-contains kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix
+cleanup  unicode hide-dotgit 4fd0166 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe install-wincred msysgit/tip4commit kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
 
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
