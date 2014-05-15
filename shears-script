@@ -187,17 +187,13 @@ mark win-tests-fixes
 
 # Branch: remote-hg-prerequisites
 bud
-##### - discussed in http://article.gmane.org/gmane.comp.version-control.msysgit/20164
 pick 12480d0 fast-export: do not refer to non-existing marks
-#####U: Felipe says: drop
 pick 5e40ceb transport-helper: add trailing --
 #####U: tried to sumbit on 2014-05-15, resubmit updated version later, when Peff's patch is in:
 # http://article.gmane.org/gmane.comp.version-control.msysgit/20238
-### "This patch is nice, you might want to send it upstream. But it's not necessary, you can drop it as well."
 pick 11b6018 remote-helper: check helper status after import/export
-#####U: Felipe says: drop
 pick fe9aab2 Always auto-gc after calling a fast-import transport
-#####U: drop?  @dscho? Tried to submit/RFC on 2014-05-15
+#####U: Tried to submit/RFC on 2014-05-15
 mark remote-hg-prerequisites
 
 # Branch: http-msys-paths
