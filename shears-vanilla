@@ -1,0 +1,313 @@
+start_merging_rebase "70d7fea"
+mark onto
+
+# Branch: unicode
+bud
+pick 64341b5 Support Unicode console output on Windows
+pick 232d19d Detect console streams more reliably on Windows
+pick 89b9445 Warn if the Windows console font doesn't support Unicode
+pick 336d506 Win32 dirent: remove unused dirent.d_ino member
+pick bac659a Win32 dirent: remove unused dirent.d_reclen member
+pick ee80482 Win32 dirent: change FILENAME_MAX to MAX_PATH
+pick 7844168 Win32 dirent: clarify #include directives
+pick ee70ba2 Win32 dirent: improve dirent implementation
+pick cf0cd42 Win32: fix potential multi-threading issue
+pick 8bb02cd Win32: move main macro to a function
+pick cca6498 MinGW: disable CRT command line globbing
+pick 10303bb Unicode console: fix font warning on Vista and Win7
+pick 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
+pick f967550 Revert "mingw.c: move definition of mingw_getenv down"
+pick 2755618 Enable color output in Windows cmd.exe
+pick da58979 MSVC: fix winansi.c compile errors
+pick 4d5e2b3 Win32: Thread-safe windows console output
+pick 64d5ed4 Win32: add Unicode conversion functions
+pick a4f9318 Win32: Unicode file name support (except dirent)
+pick 916cb22 Win32: Unicode file name support (dirent)
+pick dded4f2 Unicode file name support (gitk and git-gui)
+pick 020f167 Win32: Unicode arguments (outgoing)
+pick 867e81c Win32: Unicode arguments (incoming)
+pick 0f2f370 Win32: sync Unicode console output and file system
+pick d4f5975 Win32: Unicode environment (outgoing)
+pick 54fd715 Win32: Unicode environment (incoming)
+pick cc014c3 Win32: fix environment memory leaks
+pick a34d9c2 Win32: unify environment case-sensitivity
+pick 1696d8d Let mingw_execve() return an int
+pick fb4f2e2 Win32: simplify internal mingw_spawn* APIs
+pick 290bf81 Win32: move environment functions
+pick d876d6f Win32: unify environment function names
+pick 87ce73b Win32: factor out environment block creation
+pick 6c7a47c Win32: don't copy the environment twice when spawning child processes
+pick b2a0b39 Win32: reduce environment array reallocations
+pick 8c452ca Win32: use low-level memory allocation during initialization
+pick c614600 Win32: keep the environment sorted
+pick 84b7969 Win32: patch Windows environment on startup
+pick 91db148 Win32: fix detection of empty directories in is_dir_empty
+pick d3910e1 Win32: fix broken pipe detection
+pick a5353bd Win32: fix segfault in WriteConsoleW when debugging in gdb
+mark unicode
+
+# Branch: hide-dotgit
+rewind unicode # Win32: fix segfault in WriteConsoleW when debugging in gdb
+pick eb7b263 core.hidedotfiles: hide '.git' dir by default
+pick 329fc17 When initializing .git/, record the current setting of core.hideDotFiles
+pick 0a40f59 mingw: add tests for the hidden attribute on the git directory
+mark hide-dotgit
+
+rewind hide-dotgit # mingw: add tests for the hidden attribute on the git directory
+pick 4fd0166 Add a Windows-specific fallback to getenv("HOME");
+mark 4fd0166
+
+# Branch: unc
+rewind 4fd0166 # Add a Windows-specific fallback to getenv("HOME");
+pick 3933bb9 Allow using UNC path for git repository
+pick c3b1215 Make mingw_offset_1st_component() behave consistently for all paths.
+mark unc
+
+# Branch: am-submodules
+bud
+pick 027bba5 git am: ignore dirty submodules
+mark am-submodules
+
+# Branch: criss-cross-merge
+bud
+pick da60874 criss cross rename failure workaround
+mark criss-cross-merge
+
+# Branch: deny-current-branch
+bud
+pick a8f8e59 Add a few more values for receive.denyCurrentBranch
+pick 58a7344 Let deny.currentBranch=updateInstead ignore submodules
+mark deny-current-branch
+
+# Branch: git-gui
+bud
+pick 4788bbe Revert "git-gui: set GIT_DIR and GIT_WORK_TREE after setup"
+pick 5a9b118 git-gui: provide question helper for retry fallback on Windows
+pick 23b4798 git gui: set GIT_ASKPASS=git-gui--askpass if not set yet
+mark git-gui
+
+# Branch: gitk
+bud
+pick 81e4f9f Work around the command line limit on Windows
+pick a7fb259 Fix another invocation of git from gitk with an overly long command-line
+pick 2de8b38 gitk: Use an external icon file on Windows
+mark gitk
+
+# Branch: gitweb-syntax
+bud
+pick 98ddb56 gitweb: Allow line number toggling with Javascript
+pick e2c6495 Gitweb: make line number toggling work for Firefox and Safari
+pick 3062d41 Gitweb: add support for Alex Gorbatchev's SyntaxHighlighter in Javascript
+pick 92b7b0a Only switch on the line number toggle when highlighting is activated
+pick 160b063 gitweb (SyntaxHighlighter): interpret #l<line-number>
+mark gitweb-syntax
+
+# Branch: jberezanski/wincred-sso-r2
+bud
+pick 122aa24 t0302: check helper can handle empty credentials
+pick 074bbc2 wincred: handle empty username/password correctly
+mark jberezanski/wincred-sso-r2
+
+# Branch: send-email
+bud
+pick 22d3fab send-email: accept absolute path even on Windows
+pick 31180f8 send-email: handle Windows paths for display just like we do for processing
+mark send-email
+
+# Branch: pull-rebase-interactive
+bud
+pick 31693eb Teach 'git pull' to handle --rebase=interactive
+pick b29f215 Handle the branch.<name>.rebase value 'interactive'
+pick 11cce70 Teach 'git remote' that the config var branch.*.rebase can be 'interactive'
+mark pull-rebase-interactive
+
+# Branch: grep-fixes
+bud
+pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
+pick 31f5ab1 grep -I: do not bother to read known-binary files
+mark grep-fixes
+
+# Branch: some-CR-fixes
+bud
+pick bbfce9b submodule: Fix t7400, t7405, t7406 for msysGit
+pick 9be964c am: Use cat instead of echo to avoid DOS line-endings (fixes t4150)
+pick 6cdf307 Windows: make sure that merge-octopus only outputs LF line endings
+pick 221b3c5 Push the NATIVE_CRLF Makefile variable to C and added a test for native.
+pick be5eaf8 MinGW: Update tests to handle a native eol of crlf
+mark some-CR-fixes
+
+# Branch: win-tests-fixes
+bud
+pick 73fa916 work around misdetection of stdin attached to a tty
+pick 86145eb Handle new t1501 test case properly with MinGW
+pick b9c78b0 MinGW: Skip test redirecting to fd 4
+pick bfc7b91 t3102: Windows filesystems may not use a literal asterisk in filenames.
+pick a9813b6 t9350: point out that refs are not updated correctly
+pick 44baaf9 MinGW: disable legacy encoding tests
+pick 7bfdba4 t1050: Fix invalid call to dd(1)
+pick 43660bc Work around a problem identified by BuildHive
+pick 8d5bf41 t0008: avoid absolute path on Windows as colon is used in the tests
+pick 2c6d702 t4210: skip command-line encoding tests on mingw
+pick 92e324a t800[12]: work around MSys limitation
+pick a0c3e15 t9902: mingw-specific fix for gitfile link files
+pick 986d2d4 Disable t0110's high-bit test on Windows
+pick ef4a733 tests: do not pass iso8859-1 encoded parameter
+mark win-tests-fixes
+
+# Branch: remote-hg-prerequisites
+bud
+pick 12480d0 fast-export: do not refer to non-existing marks
+pick 5e40ceb transport-helper: add trailing --
+pick 11b6018 remote-helper: check helper status after import/export
+pick fe9aab2 Always auto-gc after calling a fast-import transport
+mark remote-hg-prerequisites
+
+# Branch: http-msys-paths
+bud
+pick 57c8e5c Handle http.* config variables pointing to files gracefully on Windows
+mark http-msys-paths
+
+# Branch: stash-reflog
+bud
+pick c34e9ff git stash: make sure that .git/logs/refs/ exists
+mark stash-reflog
+
+# Branch: fix-externals
+rewind unicode # Win32: fix segfault in WriteConsoleW when debugging in gdb
+pick ad1e2f0 Fixed wrong path delimiter in exe finding
+pick ecb9eff Fix launching of externals from Unicode paths
+pick c1c634b Make non-.exe externals work again
+mark fix-externals
+
+# Branch: fix-is-exe
+bud
+pick 6692716 help: correct behavior for is_executable on Windows
+mark fix-is-exe
+
+# Branch: install-wincred
+bud
+pick bc6bd8e wincred: add install target and avoid overwriting configured variables.
+mark install-wincred
+
+# Branch: msvc-link-crt
+bud
+pick ff9fa75 MSVC: link dynamically to the CRT
+mark msvc-link-crt
+
+# Branch: normalize-win-paths
+bud
+pick 9e9b802 Windows: Always normalize paths to Windows-style
+mark normalize-win-paths
+
+# Branch: poll-busy-wait
+bud
+pick d82d0d2 Sleep 1 millisecond in poll() to avoid busy wait
+mark poll-busy-wait
+
+# Branch: msysgit/tip4commit
+bud
+pick c70bf30 Add a README.md
+mark msysgit/tip4commit
+
+# Branch: RomanBelinsky/master
+bud
+pick e2ffc77 Update SVN.pm
+mark RomanBelinsky/master
+
+# Branch: tag-contains
+bud
+pick f172da6 git tag --contains : avoid stack overflow
+pick cec0b8e Touch up the comments in the 'tag-contains' branch
+mark tag-contains
+
+# Branch: kb/hashmap-v5-minimal
+bud
+pick c33e6c7 submodule: don't access the .gitmodules cache entry after removing it
+pick dfbbbd2 add a hashtable implementation that supports O(1) removal
+mark kb/hashmap-v5-minimal
+
+# Branch: kblees/kb/fscache-v4-tentative-1.8.5
+rewind unicode # Win32: fix segfault in WriteConsoleW when debugging in gdb
+pick e43d7f7 Win32: make FILETIME conversion functions public
+pick 659686e Win32: dirent.c: Move opendir down
+pick 3d76202 Win32: Make the dirent implementation pluggable
+pick bbb3151 Win32: make the lstat implementation pluggable
+merge refs/rewritten/4fd0166 -C 177f20e # Merge 'home' into HEAD
+pick 658d848 add infrastructure for read-only file system level caches
+pick 738ce02 Win32: add a cache below mingw's lstat and dirent implementations
+mark kblees/kb/fscache-v4-tentative-1.8.5
+
+# Branch: kblees/kb/long-paths-v2
+rewind kblees/kb/fscache-v4-tentative-1.8.5 # Win32: add a cache below mingw's lstat and dirent implementations
+pick aad2ca9 Add a test demonstrating a problem with long submodule paths
+pick 104d4e8 Win32: support long paths
+mark kblees/kb/long-paths-v2
+
+# Branch: t-b/sideband-bug
+bud
+merge refs/rewritten/unicode -C 547db2e # Merge 'unicode' into HEAD
+merge refs/rewritten/hide-dotgit -C 16180e4 # Merge 'hide-dotgit' into HEAD
+merge refs/rewritten/4fd0166 -C a565692 # Merge 'home' into HEAD
+merge refs/rewritten/unc -C 9485bf3 # Merge 'unc' into HEAD
+merge refs/rewritten/am-submodules -C be6b605 # Merge 'am-submodules' into HEAD
+merge refs/rewritten/criss-cross-merge -C 7536fcf # Merge 'criss-cross-merge' into HEAD
+merge refs/rewritten/deny-current-branch -C 9a1e8b5 # Merge 'deny-current-branch' into HEAD
+merge refs/rewritten/git-gui -C 790f423 # Merge 'git-gui' into HEAD
+merge refs/rewritten/gitk -C 48e6355 # Merge 'gitk' into HEAD
+merge refs/rewritten/gitweb-syntax -C 6635333 # Merge 'gitweb-syntax' into HEAD
+merge refs/rewritten/jberezanski/wincred-sso-r2 -C 2398365 # Merge 'jberezanski/wincred-sso-r2' into HEAD
+merge refs/rewritten/send-email -C ab62c69 # Merge 'send-email' into HEAD
+merge refs/rewritten/pull-rebase-interactive -C 5322eac # Merge 'pull-rebase-interactive' into HEAD
+merge refs/rewritten/grep-fixes -C 5a9b308 # Merge 'grep-fixes' into HEAD
+merge refs/rewritten/some-CR-fixes -C cbdee02 # Merge branch 'some-CR-fixes'
+merge refs/rewritten/win-tests-fixes -C acdd2fc # Merge 'win-tests-fixes' into HEAD
+merge refs/rewritten/remote-hg-prerequisites -C b7593f8 # Merge 'remote-hg-prerequisites' into HEAD
+merge refs/rewritten/http-msys-paths -C 7abda7a # Merge 'http-msys-paths' into HEAD
+merge refs/rewritten/stash-reflog -C e598900 # Merge 'stash-reflog' into HEAD
+merge refs/rewritten/fix-externals -C 4af426c # Merge 'fix-externals' into HEAD
+merge refs/rewritten/fix-is-exe -C 618f814 # Merge 'fix-is-exe' into HEAD
+merge refs/rewritten/install-wincred -C a02dd25 # Merge 'install-wincred' into HEAD
+merge refs/rewritten/msvc-link-crt -C 8f9a5f3 # Merge 'msvc-link-crt' into HEAD
+merge refs/rewritten/normalize-win-paths -C 43e098b # Merge 'normalize-win-paths' into HEAD
+merge refs/rewritten/poll-busy-wait -C d774bfc # Merge 'poll-busy-wait' into HEAD
+merge refs/rewritten/msysgit/tip4commit -C 8947aba # Merge pull request #115 from msysgit/tip4commit
+merge refs/rewritten/RomanBelinsky/master -C 58af5a8 # Merge pull request #126 from RomanBelinsky/master
+merge refs/rewritten/tag-contains -C 0853bed # Merge branch 'tag-contains'
+merge refs/rewritten/kb/hashmap-v5-minimal -C 2588ee0 # Merge branch 'kb/hashmap-v5-minimal' into kb/fscache-v4-t1.8.5
+merge refs/rewritten/kblees/kb/fscache-v4-tentative-1.8.5 -C 231f538 # Merge remote-tracking branch 'kblees/kb/fscache-v4-tentative-1.8.5' into thicket-1.8.5.2
+merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #122 from kblees/kb/long-paths-v2
+pick db40d88 Makefile: do not depend on curl-config
+mark db40d88
+
+pick b6e7fcf Config option to disable side-band-64k for transport
+mark t-b/sideband-bug
+
+# Branch: kasal/tests-no-posix
+bud
+pick d928d33 Revert "test: fix t7001 cp to use POSIX options"
+mark kasal/tests-no-posix
+
+rewind db40d88 # Makefile: do not depend on curl-config
+merge refs/rewritten/t-b/sideband-bug -C 9860bbb # Merge remote-tracking branch 't-b/sideband-bug'
+pick 12949d0 config.c: mark die_bad_number as NORETURN
+merge refs/rewritten/kasal/tests-no-posix -C 70d7fea # Merge pull request #181 from kasal/tests-no-posix
+
+cleanup  unicode hide-dotgit 4fd0166 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive grep-fixes some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe install-wincred msvc-link-crt normalize-win-paths poll-busy-wait msysgit/tip4commit RomanBelinsky/master tag-contains kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix db40d88
+
+# Rebase 70d7fea..70d7fea onto 7b9918a
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
