@@ -115,12 +115,14 @@ mark hide-dotgit
 
 rewind hide-dotgit # mingw: add tests for the hidden attribute on the git directory
 pick 4fd0166 Add a Windows-specific fallback to getenv("HOME");
+#####U: drop the offset_1st func, it got there by mistake.
 mark 4fd0166
 
 # Branch: unc
 rewind 4fd0166 # Add a Windows-specific fallback to getenv("HOME");
 pick 3933bb9 Allow using UNC path for git repository
 pick c3b1215 Make mingw_offset_1st_component() behave consistently for all paths.
+#####U: squash the above two before submitting
 mark unc
 
 # Branch: am-submodules
