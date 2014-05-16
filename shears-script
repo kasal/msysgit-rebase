@@ -37,6 +37,28 @@ mark junio/notyet
 #pick 31f5ab1 grep -I: do not bother to read known-binary files
 #####U: drop: http://article.gmane.org/gmane.comp.version-control.msysgit/20225
 
+# Karsten Blees writes:
+
+# The unicode patches almost exclusively change Windows-only code, except:
+# - changes to git-gui and gitk that unconditionally assume all files are utf-8 encoded
+# The rest of the patch series is _mostly_ interdependent small changes, i.e. order really matters.
+
+# Things that could probably be cleaned up for upstream:
+
+# - Some patches fix bugs that were introduced earlier, these could be squashed into the earlier commit.
+# E.g. "Unicode console: fix font warning on Vista and Win7", "MSVC: fix winansi.c compile errors"
+# or "Win32: fix segfault in WriteConsoleW when debugging in gdb".
+# Other fixes have sufficient gotchas/complexity that they should probably remain separate,
+# e.g. "Win32: fix broken pipe detection".
+
+# - In "Enable color output in Windows cmd.exe", simulating "TERM=winansi"
+# (i.e. escape sequences groked by compat/winansi.c) should probably be changed to "msys" or "cygwin".
+# With "Win32: patch Windows environment on startup", these environment changes are visible to child
+# processes, and as /etc/termcap typically has no "winansi", this causes problems e.g. in less.
+# Currently, this is adressed in Git for Windows by setting TERM in both bash and the cmd wrapper.
+
+# That's all I can think of right now...
+
 # Branch: unicode
 bud
 pick 64341b5 Support Unicode console output on Windows
@@ -50,6 +72,7 @@ pick ee70ba2 Win32 dirent: improve dirent implementation
 pick cf0cd42 Win32: fix potential multi-threading issue
 pick 8bb02cd Win32: move main macro to a function
 #####U: submitted 2014-05-01 as two patches in http://article.gmane.org/gmane.comp.version-control.msysgit/20136
+# the main(const argv) change shall be separated, Marat's version is nicer
 pick cca6498 MinGW: disable CRT command line globbing
 pick 10303bb Unicode console: fix font warning on Vista and Win7
 pick 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
