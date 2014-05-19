@@ -1,4 +1,4 @@
-start_merging_rebase "17e522f"
+start_merging_rebase "0516023"
 mark onto
 
 # Branch: refs/rewritten/junio/master
@@ -205,6 +205,7 @@ mark fix-is-exe
 # Branch: install-wincred
 bud
 pick afa02e2 wincred: add install target and avoid overwriting configured variables.
+fixup dbbfda0 wincred: add install target and avoid overwriting configured variables.
 mark install-wincred
 
 # Branch: msysgit/tip4commit
@@ -280,12 +281,19 @@ merge refs/rewritten/kblees/kb/fscache-v4-tentative-1.8.5 -C 03c05b9 # Merge rem
 merge refs/rewritten/kblees/kb/long-paths-v2 -C 22d6277 # Merge pull request #122 from kblees/kb/long-paths-v2
 mark kasal/master
 
+# Branch: kasal/revert-install-wincred
 bud
 merge refs/rewritten/kasal/master -C 17e522f # Merge pull request #184 from kasal/master
+mark 17e522f
 
-cleanup  refs/rewritten/junio/master refs/rewritten/junio/next refs/rewritten/junio/pu refs/rewritten/junio/notyet unicode hide-dotgit 967d788 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe install-wincred msysgit/tip4commit kb/hashmap-v5-minimal t-b/sideband-bug kasal/tests-no-posix kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 kasal/master
+mark kasal/revert-install-wincred
 
-# Rebase 17e522f..17e522f onto eea5913
+rewind 17e522f # Merge pull request #184 from kasal/master
+merge refs/rewritten/kasal/revert-install-wincred -C 0516023 # Merge pull request #188 from kasal/revert-install-wincred
+
+cleanup  refs/rewritten/junio/master refs/rewritten/junio/next refs/rewritten/junio/pu refs/rewritten/junio/notyet unicode hide-dotgit 967d788 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe install-wincred msysgit/tip4commit kb/hashmap-v5-minimal t-b/sideband-bug kasal/tests-no-posix kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 kasal/master kasal/revert-install-wincred 17e522f
+
+# Rebase 0516023..0516023 onto eea5913
 #
 # Commands:
 #  p, pick = use commit
