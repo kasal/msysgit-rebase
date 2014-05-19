@@ -16,11 +16,20 @@ pick 784f4b6 Update SVN.pm
 pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
 pick a08e803 MSVC: link dynamically to the CRT
 # -- there was conflict for a08e803, next time, use the rebased one: 997304a
+pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
+# was: 9e9b802 Windows: Always normalize paths to Windows-style
 mark junio/next
 
 bud
-pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
-# was: 9e9b802 Windows: Always normalize paths to Windows-style
+pick bc6bd8e wincred: add install target and avoid overwriting configured variables.
+# was Branch: install-wincred
+#####U: ... discussion http://article.gmane.org/gmane.comp.version-control.git/247679
+# kusma (Erik F-L) acked 1) install target 2) pseudo-"avoid-overwrite" (changing style for defaults)
+# the rest is cosmetics and has to go
+#####U: got into junio/pu:  (refresh, drop the rest)
+#ebb1f5a Merge branch 'sk/wincred' into jch
+#248b68f wincred: avoid overwriting configured variables
+#ccfb5bd wincred: add install target
 mark junio/pu
 
 bud
@@ -243,14 +252,6 @@ bud
 pick 6692716 help: correct behavior for is_executable on Windows
 mark fix-is-exe
 
-# Branch: install-wincred
-bud
-pick bc6bd8e wincred: add install target and avoid overwriting configured variables.
-#####U: ... discussion http://article.gmane.org/gmane.comp.version-control.git/247679
-# kusma (Erik F-L) acked 1) install target 2) pseudo-"avoid-overwrite" (changing style for defaults)
-# the rest is cosmetics and has to go
-mark install-wincred
-
 # Branch: msysgit/tip4commit
 bud
 pick c70bf30 Add a README.md
@@ -318,7 +319,6 @@ merge refs/rewritten/http-msys-paths -C 7abda7a # Merge 'http-msys-paths' into H
 merge refs/rewritten/stash-reflog -C e598900 # Merge 'stash-reflog' into HEAD
 merge refs/rewritten/fix-externals -C 4af426c # Merge 'fix-externals' into HEAD
 merge refs/rewritten/fix-is-exe -C 618f814 # Merge 'fix-is-exe' into HEAD
-merge refs/rewritten/install-wincred -C a02dd25 # Merge 'install-wincred' into HEAD
 merge refs/rewritten/msysgit/tip4commit -C 8947aba # Merge pull request #115 from msysgit/tip4commit
 merge refs/rewritten/kb/hashmap-v5-minimal -C 2588ee0 # Merge branch 'kb/hashmap-v5-minimal' into kb/fscache-v4-t1.8.5
 merge refs/rewritten/t-b/sideband-bug -C 9860bbb # Merge remote-tracking branch 't-b/sideband-bug'
@@ -327,7 +327,7 @@ merge refs/rewritten/kasal/tests-no-posix -C 70d7fea # Merge pull request #181 f
 merge refs/rewritten/kblees/kb/fscache-v4-tentative-1.8.5 -C 231f538 # Merge remote-tracking branch 'kblees/kb/fscache-v4-tentative-1.8.5' into thicket-1.8.5.2
 merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #122 from kblees/kb/long-paths-v2
 
-cleanup  unicode hide-dotgit 4fd0166 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe install-wincred msysgit/tip4commit kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
+cleanup  unicode hide-dotgit 4fd0166 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe msysgit/tip4commit kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
 
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
