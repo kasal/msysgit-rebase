@@ -131,7 +131,7 @@ mark 4fd0166
 rewind 4fd0166 # Add a Windows-specific fallback to getenv("HOME");
 pick 3933bb9 Allow using UNC path for git repository
 pick c3b1215 Make mingw_offset_1st_component() behave consistently for all paths.
-#####U: squash the above two before submitting
+#####U: squashed the above two, submitted 2014-05-19
 mark unc
 
 # Branch: am-submodules
