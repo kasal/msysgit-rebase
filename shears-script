@@ -30,12 +30,12 @@ bud
 pick ccfb5bd wincred: add install target
 pick 248b68f wincred: avoid overwriting configured variables
 #ebb1f5a Merge branch 'sk/wincred' into jch
-#####
+#####--------
 #pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
 #squash d7555a2
 #####U: submitted 2014-05-14, seems accepted -- s/-i/-I/, also in commit message
 ### http://article.gmane.org/gmane.comp.version-control.git/248934
-# -- next time, use the squashed one: 2a245b1
+# --> our squashed one: 2a245b1
 pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
 mark junio/pu
 
@@ -47,6 +47,12 @@ mark junio/notyet
 ### dropped:
 #pick 31f5ab1 grep -I: do not bother to read known-binary files
 #####U: drop: http://article.gmane.org/gmane.comp.version-control.msysgit/20225
+
+#pick c34e9ff git stash: make sure that .git/logs/refs/ exists
+# originally e751046, then branch stash-reflog
+# should be moved to store_stash, just after "# Make sure the reflog"
+# beware latest change in junio/pu: 7b5c6dd8 git-stash: avoid hardcoding $GIT_DIR/logs/....
+#####U: drop, Dscho agreed.  (could not reproduce)
 
 # Karsten Blees writes:
 
@@ -239,14 +245,6 @@ bud
 pick 57c8e5c Handle http.* config variables pointing to files gracefully on Windows
 mark http-msys-paths
 
-# Branch: stash-reflog
-bud
-pick c34e9ff git stash: make sure that .git/logs/refs/ exists
-# originally e751046
-# should be moved to store_stash, just after "# Make sure the reflog"
-# beware latest change in junio/pu: 7b5c6dd8 git-stash: avoid hardcoding $GIT_DIR/logs/....
-mark stash-reflog
-
 # Branch: fix-externals
 rewind unicode # Win32: fix segfault in WriteConsoleW when debugging in gdb
 pick ad1e2f0 Fixed wrong path delimiter in exe finding
@@ -323,7 +321,6 @@ merge refs/rewritten/some-CR-fixes -C cbdee02 # Merge branch 'some-CR-fixes'
 merge refs/rewritten/win-tests-fixes -C acdd2fc # Merge 'win-tests-fixes' into HEAD
 merge refs/rewritten/remote-hg-prerequisites -C b7593f8 # Merge 'remote-hg-prerequisites' into HEAD
 merge refs/rewritten/http-msys-paths -C 7abda7a # Merge 'http-msys-paths' into HEAD
-merge refs/rewritten/stash-reflog -C e598900 # Merge 'stash-reflog' into HEAD
 merge refs/rewritten/fix-externals -C 4af426c # Merge 'fix-externals' into HEAD
 merge refs/rewritten/fix-is-exe -C 618f814 # Merge 'fix-is-exe' into HEAD
 merge refs/rewritten/msysgit/tip4commit -C 8947aba # Merge pull request #115 from msysgit/tip4commit
@@ -334,7 +331,7 @@ merge refs/rewritten/kasal/tests-no-posix -C 70d7fea # Merge pull request #181 f
 merge refs/rewritten/kblees/kb/fscache-v4-tentative-1.8.5 -C 231f538 # Merge remote-tracking branch 'kblees/kb/fscache-v4-tentative-1.8.5' into thicket-1.8.5.2
 merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #122 from kblees/kb/long-paths-v2
 
-cleanup  unicode hide-dotgit 4fd0166 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe msysgit/tip4commit kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
+cleanup  unicode hide-dotgit 4fd0166 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
 
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
