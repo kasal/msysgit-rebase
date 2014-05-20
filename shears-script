@@ -21,25 +21,27 @@ pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
 mark junio/next
 
 bud
-pick bc6bd8e wincred: add install target and avoid overwriting configured variables.
+#pick bc6bd8e wincred: add install target and avoid overwriting configured variables.
 # was Branch: install-wincred
 #####U: ... discussion http://article.gmane.org/gmane.comp.version-control.git/247679
 # kusma (Erik F-L) acked 1) install target 2) pseudo-"avoid-overwrite" (changing style for defaults)
 # the rest is cosmetics and has to go
 #####U: got into junio/pu:  (refresh, drop the rest)
 #ebb1f5a Merge branch 'sk/wincred' into jch
-#248b68f wincred: avoid overwriting configured variables
-#ccfb5bd wincred: add install target
+pick 248b68f wincred: avoid overwriting configured variables
+pick ccfb5bd wincred: add install target
+#####
+#pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
+#squash d7555a2
+#####U: submitted 2014-05-14, seems accepted -- s/-i/-I/, also in commit message
+### http://article.gmane.org/gmane.comp.version-control.git/248934
+# -- next time, use the squashed one: 2a245b1
+pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
 mark junio/pu
 
 bud
 pick db40d88 Makefile: do not depend on curl-config
 #####U: junio is going to merge early in 2.1: http://article.gmane.org/gmane.comp.version-control.msysgit/20130
-pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
-squash d7555a2
-#####U: submitted 2014-05-14, seems accepted -- s/-i/-I/, also in commit message
-### http://article.gmane.org/gmane.comp.version-control.git/248934
-# -- next time, use the squashed one: 2a245b1
 mark junio/notyet
 
 ### dropped:
