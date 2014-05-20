@@ -27,9 +27,9 @@ bud
 # kusma (Erik F-L) acked 1) install target 2) pseudo-"avoid-overwrite" (changing style for defaults)
 # the rest is cosmetics and has to go
 #####U: got into junio/pu:  (refresh, drop the rest)
-#ebb1f5a Merge branch 'sk/wincred' into jch
-pick 248b68f wincred: avoid overwriting configured variables
 pick ccfb5bd wincred: add install target
+pick 248b68f wincred: avoid overwriting configured variables
+#ebb1f5a Merge branch 'sk/wincred' into jch
 #####
 #pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
 #squash d7555a2
@@ -69,6 +69,8 @@ mark junio/notyet
 # Currently, this is adressed in Git for Windows by setting TERM in both bash and the cmd wrapper.
 
 # That's all I can think of right now...
+
+# /Karsten Blees writes:
 
 # Branch: unicode
 bud
@@ -240,6 +242,9 @@ mark http-msys-paths
 # Branch: stash-reflog
 bud
 pick c34e9ff git stash: make sure that .git/logs/refs/ exists
+# originally e751046
+# should be moved to store_stash, just after "# Make sure the reflog"
+# beware latest change in junio/pu: 7b5c6dd8 git-stash: avoid hardcoding $GIT_DIR/logs/....
 mark stash-reflog
 
 # Branch: fix-externals
