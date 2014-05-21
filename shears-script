@@ -37,6 +37,11 @@ pick 248b68f wincred: avoid overwriting configured variables
 ### http://article.gmane.org/gmane.comp.version-control.git/248934
 # --> our squashed one: 2a245b1
 pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
+#####--------
+#pick 3933bb9 Allow using UNC path for git repository
+#pick c3b1215 Make mingw_offset_1st_component() behave consistently for all paths.
+#####U: squashed the above two, submitted 2014-05-19 
+pick 6f5fc10 Windows: Allow using UNC path for git repository
 mark junio/pu
 
 bud
@@ -47,7 +52,7 @@ mark junio/notyet
 ### dropped:
 #pick 31f5ab1 grep -I: do not bother to read known-binary files
 #####U: drop: http://article.gmane.org/gmane.comp.version-control.msysgit/20225
-
+#####--------
 #pick c34e9ff git stash: make sure that .git/logs/refs/ exists
 # originally e751046, then branch stash-reflog
 # should be moved to store_stash, just after "# Make sure the reflog"
@@ -135,14 +140,7 @@ mark hide-dotgit
 rewind hide-dotgit # mingw: add tests for the hidden attribute on the git directory
 pick 4fd0166 Add a Windows-specific fallback to getenv("HOME");
 #####U: drop the offset_1st func, it got there by mistake.
-mark 4fd0166
-
-# Branch: unc
-rewind 4fd0166 # Add a Windows-specific fallback to getenv("HOME");
-pick 3933bb9 Allow using UNC path for git repository
-pick c3b1215 Make mingw_offset_1st_component() behave consistently for all paths.
-#####U: squashed the above two, submitted 2014-05-19
-mark unc
+mark home
 
 # Branch: am-submodules
 bud
@@ -272,7 +270,7 @@ mark kb/hashmap-v5-minimal
 # Branch: t-b/sideband-bug
 bud
 pick b6e7fcf Config option to disable side-band-64k for transport
-#####U: "Yes I will try to bring it upstream myself, or at least make them aware of the work around ;)" t-b in priv mail
+#####U: "Yes I will try to bring it upstream myself, or at least make them aware of the work around ;)" t-b in priv mail, around 2014-05-10
 ##problem reported and analyzed here http://article.gmane.org/gmane.comp.version-control.msysgit/15263
 mark t-b/sideband-bug
 
@@ -288,7 +286,7 @@ pick e43d7f7 Win32: make FILETIME conversion functions public
 pick 659686e Win32: dirent.c: Move opendir down
 pick 3d76202 Win32: Make the dirent implementation pluggable
 pick bbb3151 Win32: make the lstat implementation pluggable
-merge refs/rewritten/4fd0166 -C 177f20e # Merge 'home' into HEAD
+merge refs/rewritten/home -C 177f20e # Merge 'home' into HEAD
 pick 658d848 add infrastructure for read-only file system level caches
 pick 738ce02 Win32: add a cache below mingw's lstat and dirent implementations
 mark kblees/kb/fscache-v4-tentative-1.8.5
@@ -297,6 +295,7 @@ mark kblees/kb/fscache-v4-tentative-1.8.5
 rewind kblees/kb/fscache-v4-tentative-1.8.5 # Win32: add a cache below mingw's lstat and dirent implementations
 pick aad2ca9 Add a test demonstrating a problem with long submodule paths
 pick 104d4e8 Win32: support long paths
+squash fd531e9 kasal's fix, commit msg contains reproducer script
 mark kblees/kb/long-paths-v2
 
 bud
@@ -306,8 +305,7 @@ merge refs/rewritten/junio/pu
 merge refs/rewritten/junio/notyet
 merge refs/rewritten/unicode -C 547db2e # Merge 'unicode' into HEAD
 merge refs/rewritten/hide-dotgit -C 16180e4 # Merge 'hide-dotgit' into HEAD
-merge refs/rewritten/4fd0166 -C a565692 # Merge 'home' into HEAD
-merge refs/rewritten/unc -C 9485bf3 # Merge 'unc' into HEAD
+merge refs/rewritten/home -C a565692 # Merge 'home' into HEAD
 merge refs/rewritten/am-submodules -C be6b605 # Merge 'am-submodules' into HEAD
 merge refs/rewritten/criss-cross-merge -C 7536fcf # Merge 'criss-cross-merge' into HEAD
 merge refs/rewritten/deny-current-branch -C 9a1e8b5 # Merge 'deny-current-branch' into HEAD
@@ -331,7 +329,7 @@ merge refs/rewritten/kasal/tests-no-posix -C 70d7fea # Merge pull request #181 f
 merge refs/rewritten/kblees/kb/fscache-v4-tentative-1.8.5 -C 231f538 # Merge remote-tracking branch 'kblees/kb/fscache-v4-tentative-1.8.5' into thicket-1.8.5.2
 merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #122 from kblees/kb/long-paths-v2
 
-cleanup  unicode hide-dotgit 4fd0166 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
+cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
 
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
