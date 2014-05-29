@@ -1,4 +1,4 @@
-start_merging_rebase "70d7fea"
+start_merging_rebase master
 mark onto
 
 ###  The upstream status is denoted by an "#####U:" comment *below* the pick command.
@@ -6,24 +6,16 @@ mark onto
 # First, already accepted patches:
 
 bud
-pick 06bdc23 config.c: mark die_bad_number as NORETURN
-mark junio/master
-
-bud
-pick d01bac0 git tag --contains : avoid stack overflow
+pick cbc60b6 git tag --contains : avoid stack overflow
 pick 784f4b6 Update SVN.pm
 pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
-pick 997304a MSVC: link dynamically to the CRT
+pick a08e803 MSVC: link dynamically to the CRT
 pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
 pick ccfb5bd wincred: add install target
 pick 248b68f wincred: avoid overwriting configured variables
 pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
 pick 6f5fc10 Windows: Allow using UNC path for git repository
 mark junio/next
-
-bud
-#####--------
-mark junio/pu
 
 bud
 pick db40d88 Makefile: do not depend on curl-config
@@ -78,6 +70,7 @@ pick cf0cd42 Win32: fix potential multi-threading issue
 pick 8bb02cd Win32: move main macro to a function
 #####U: submitted 2014-05-01 as two patches in http://article.gmane.org/gmane.comp.version-control.msysgit/20136
 # the main(const argv) change shall be separated, Marat's version is nicer
+#####U: submitted again on 2014-05-29, together with a new const fix
 pick cca6498 MinGW: disable CRT command line globbing
 pick 10303bb Unicode console: fix font warning on Vista and Win7
 pick 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
@@ -214,7 +207,7 @@ pick 12480d0 fast-export: do not refer to non-existing marks
 pick 5e40ceb transport-helper: add trailing --
 #####U: tried to sumbit on 2014-05-15, resubmit updated version later, when Peff's patch is in:
 # http://article.gmane.org/gmane.comp.version-control.msysgit/20238
-pick 11b6018 remote-helper: check helper status after import/export
+pick 3071f23 remote-helper: check helper status after import/export # was 11b6018, conflict resolved
 pick fe9aab2 Always auto-gc after calling a fast-import transport
 #####U: Tried to submit/RFC on 2014-05-15
 mark remote-hg-prerequisites
@@ -241,12 +234,6 @@ bud
 pick c70bf30 Add a README.md
 #####U: do not upstream
 mark msysgit/tip4commit
-
-# Branch: kb/hashmap-v5-minimal
-bud
-pick c33e6c7 submodule: don't access the .gitmodules cache entry after removing it
-pick dfbbbd2 add a hashtable implementation that supports O(1) removal
-mark kb/hashmap-v5-minimal
 
 # Branch: t-b/sideband-bug
 bud
@@ -278,16 +265,16 @@ rewind kblees/kb/fscache-v4-tentative-1.8.5 # Win32: add a cache below mingw's l
 pick aad2ca9 Add a test demonstrating a problem with long submodule paths
 pick 104d4e8 Win32: support long paths
 squash a15723c Win32: support long paths
+#####U: -> squashed version a0e78a5
 mark kblees/kb/long-paths-v2
 
 bud
-merge refs/rewritten/junio/master
-merge refs/rewritten/junio/next
-merge refs/rewritten/junio/pu
-merge refs/rewritten/junio/notyet
+merge refs/rewritten/junio/next -m 'Merge junio/next patches'
+merge refs/rewritten/junio/notyet -m 'Merge junio/notyet patches'
 merge refs/rewritten/unicode -C 547db2e # Merge 'unicode' into HEAD
 merge refs/rewritten/hide-dotgit -C 16180e4 # Merge 'hide-dotgit' into HEAD
 merge refs/rewritten/home -C a565692 # Merge 'home' into HEAD
+# there were conflicts merging home and hide-dotgit; improve for the next round...
 merge refs/rewritten/am-submodules -C be6b605 # Merge 'am-submodules' into HEAD
 merge refs/rewritten/criss-cross-merge -C 7536fcf # Merge 'criss-cross-merge' into HEAD
 merge refs/rewritten/deny-current-branch -C 9a1e8b5 # Merge 'deny-current-branch' into HEAD
@@ -304,14 +291,16 @@ merge refs/rewritten/http-msys-paths -C 7abda7a # Merge 'http-msys-paths' into H
 merge refs/rewritten/fix-externals -C 4af426c # Merge 'fix-externals' into HEAD
 merge refs/rewritten/fix-is-exe -C 618f814 # Merge 'fix-is-exe' into HEAD
 merge refs/rewritten/msysgit/tip4commit -C 8947aba # Merge pull request #115 from msysgit/tip4commit
-merge refs/rewritten/kb/hashmap-v5-minimal -C 2588ee0 # Merge branch 'kb/hashmap-v5-minimal' into kb/fscache-v4-t1.8.5
 merge refs/rewritten/t-b/sideband-bug -C 9860bbb # Merge remote-tracking branch 't-b/sideband-bug'
 merge refs/rewritten/kasal/tests-no-posix -C 70d7fea # Merge pull request #181 from kasal/tests-no-posix
 
 merge refs/rewritten/kblees/kb/fscache-v4-tentative-1.8.5 -C 231f538 # Merge remote-tracking branch 'kblees/kb/fscache-v4-tentative-1.8.5' into thicket-1.8.5.2
 merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #122 from kblees/kb/long-paths-v2
 
-cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kb/hashmap-v5-minimal kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
+pick 4e64cd8 tests: turn off git-daemon tests if FIFOs are not available
+#####U: submitted immediately, 2014-05-29
+
+cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/next junio/notyet
 
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
