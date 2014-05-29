@@ -10,38 +10,19 @@ pick 06bdc23 config.c: mark die_bad_number as NORETURN
 mark junio/master
 
 bud
-pick cbc60b6 git tag --contains : avoid stack overflow
-# -- there was conflict for cbc60b6, next time, use the rebased one: d01bac0
+pick d01bac0 git tag --contains : avoid stack overflow
 pick 784f4b6 Update SVN.pm
 pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
-pick a08e803 MSVC: link dynamically to the CRT
-# -- there was conflict for a08e803, next time, use the rebased one: 997304a
+pick 997304a MSVC: link dynamically to the CRT
 pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
-# was: 9e9b802 Windows: Always normalize paths to Windows-style
+pick ccfb5bd wincred: add install target
+pick 248b68f wincred: avoid overwriting configured variables
+pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
+pick 6f5fc10 Windows: Allow using UNC path for git repository
 mark junio/next
 
 bud
-#pick bc6bd8e wincred: add install target and avoid overwriting configured variables.
-# was Branch: install-wincred
-#####U: ... discussion http://article.gmane.org/gmane.comp.version-control.git/247679
-# kusma (Erik F-L) acked 1) install target 2) pseudo-"avoid-overwrite" (changing style for defaults)
-# the rest is cosmetics and has to go
-#####U: got into junio/pu:  (refresh, drop the rest)
-pick ccfb5bd wincred: add install target
-pick 248b68f wincred: avoid overwriting configured variables
-#ebb1f5a Merge branch 'sk/wincred' into jch
 #####--------
-#pick 80d7b91 git grep -O -i: if the pager is 'less', pass the '-i' option
-#squash d7555a2
-#####U: submitted 2014-05-14, seems accepted -- s/-i/-I/, also in commit message
-### http://article.gmane.org/gmane.comp.version-control.git/248934
-# --> our squashed one: 2a245b1
-pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
-#####--------
-#pick 3933bb9 Allow using UNC path for git repository
-#pick c3b1215 Make mingw_offset_1st_component() behave consistently for all paths.
-#####U: squashed the above two, submitted 2014-05-19 
-pick 6f5fc10 Windows: Allow using UNC path for git repository
 mark junio/pu
 
 bud
@@ -287,6 +268,7 @@ pick 659686e Win32: dirent.c: Move opendir down
 pick 3d76202 Win32: Make the dirent implementation pluggable
 pick bbb3151 Win32: make the lstat implementation pluggable
 merge refs/rewritten/home -C 177f20e # Merge 'home' into HEAD
+#####U: when home is accepted, merge hide-dotgit?
 pick 658d848 add infrastructure for read-only file system level caches
 pick 738ce02 Win32: add a cache below mingw's lstat and dirent implementations
 mark kblees/kb/fscache-v4-tentative-1.8.5
