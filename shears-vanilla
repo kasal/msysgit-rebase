@@ -1,4 +1,4 @@
-start_merging_rebase "0516023"
+start_merging_rebase "6679ea9"
 mark onto
 
 # Branch: refs/rewritten/junio/master
@@ -244,6 +244,7 @@ mark kblees/kb/fscache-v4-tentative-1.8.5
 rewind kblees/kb/fscache-v4-tentative-1.8.5 # Win32: add a cache below mingw's lstat and dirent implementations
 pick f5d08ef Add a test demonstrating a problem with long submodule paths
 pick 25b55e7 Win32: support long paths
+squash a15723c Win32: support long paths
 mark kblees/kb/long-paths-v2
 
 # Branch: kasal/master
@@ -288,12 +289,19 @@ mark 17e522f
 
 mark kasal/revert-install-wincred
 
+# Branch: kasal/kb-long-paths-v3
 rewind 17e522f # Merge pull request #184 from kasal/master
 merge refs/rewritten/kasal/revert-install-wincred -C 0516023 # Merge pull request #188 from kasal/revert-install-wincred
+mark 0516023
 
-cleanup  refs/rewritten/junio/master refs/rewritten/junio/next refs/rewritten/junio/pu refs/rewritten/junio/notyet unicode hide-dotgit 967d788 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe install-wincred msysgit/tip4commit kb/hashmap-v5-minimal t-b/sideband-bug kasal/tests-no-posix kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 kasal/master kasal/revert-install-wincred 17e522f
+mark kasal/kb-long-paths-v3
 
-# Rebase 0516023..0516023 onto eea5913
+rewind 0516023 # Merge pull request #188 from kasal/revert-install-wincred
+merge refs/rewritten/kasal/kb-long-paths-v3 -C 6679ea9 # Merge pull request #190 from kasal/kb-long-paths-v3
+
+cleanup  refs/rewritten/junio/master refs/rewritten/junio/next refs/rewritten/junio/pu refs/rewritten/junio/notyet unicode hide-dotgit 967d788 unc am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths stash-reflog fix-externals fix-is-exe install-wincred msysgit/tip4commit kb/hashmap-v5-minimal t-b/sideband-bug kasal/tests-no-posix kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 kasal/master kasal/revert-install-wincred kasal/kb-long-paths-v3 17e522f 0516023
+
+# Rebase 6679ea9..6679ea9 onto 5318336
 #
 # Commands:
 #  p, pick = use commit

@@ -277,7 +277,7 @@ mark kblees/kb/fscache-v4-tentative-1.8.5
 rewind kblees/kb/fscache-v4-tentative-1.8.5 # Win32: add a cache below mingw's lstat and dirent implementations
 pick aad2ca9 Add a test demonstrating a problem with long submodule paths
 pick 104d4e8 Win32: support long paths
-squash fd531e9 kasal's fix, commit msg contains reproducer script
+squash a15723c Win32: support long paths
 mark kblees/kb/long-paths-v2
 
 bud
