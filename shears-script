@@ -1,4 +1,4 @@
-start_merging_rebase "70d7fea"
+start_merging_rebase "6679ea9"
 mark onto
 
 ###  The upstream status is denoted by an "#####U:" comment *below* the pick command.
@@ -10,10 +10,10 @@ pick 06bdc23 config.c: mark die_bad_number as NORETURN
 mark junio/master
 
 bud
-pick d01bac0 git tag --contains : avoid stack overflow
+pick cbc60b6 git tag --contains : avoid stack overflow
 pick 784f4b6 Update SVN.pm
 pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
-pick 997304a MSVC: link dynamically to the CRT
+pick a08e803 MSVC: link dynamically to the CRT
 pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
 pick ccfb5bd wincred: add install target
 pick 248b68f wincred: avoid overwriting configured variables
@@ -214,7 +214,7 @@ pick 12480d0 fast-export: do not refer to non-existing marks
 pick 5e40ceb transport-helper: add trailing --
 #####U: tried to sumbit on 2014-05-15, resubmit updated version later, when Peff's patch is in:
 # http://article.gmane.org/gmane.comp.version-control.msysgit/20238
-pick 11b6018 remote-helper: check helper status after import/export
+pick 3071f23 remote-helper: check helper status after import/export # was 11b6018, conflict resolved
 pick fe9aab2 Always auto-gc after calling a fast-import transport
 #####U: Tried to submit/RFC on 2014-05-15
 mark remote-hg-prerequisites
