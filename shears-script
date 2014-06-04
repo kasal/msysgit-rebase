@@ -6,10 +6,13 @@ mark onto
 # First, already accepted patches:
 
 bud
-pick cbc60b6 git tag --contains : avoid stack overflow
 pick 784f4b6 Update SVN.pm
-pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
+pick cbc60b6 git tag --contains : avoid stack overflow
 pick a08e803 MSVC: link dynamically to the CRT
+mark junio/master
+
+bud
+pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
 pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
 pick ccfb5bd wincred: add install target
 pick 248b68f wincred: avoid overwriting configured variables
@@ -269,8 +272,9 @@ squash a15723c Win32: support long paths
 mark kblees/kb/long-paths-v2
 
 bud
-merge refs/rewritten/junio/next -m 'Merge junio/next patches'
-merge refs/rewritten/junio/notyet -m 'Merge junio/notyet patches'
+merge refs/rewritten/junio/master
+merge refs/rewritten/junio/next
+merge refs/rewritten/junio/notyet
 merge refs/rewritten/unicode -C 547db2e # Merge 'unicode' into HEAD
 merge refs/rewritten/hide-dotgit -C 16180e4 # Merge 'hide-dotgit' into HEAD
 merge refs/rewritten/home -C a565692 # Merge 'home' into HEAD
@@ -300,7 +304,7 @@ merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #12
 pick 4e64cd8 tests: turn off git-daemon tests if FIFOs are not available
 #####U: submitted immediately, 2014-05-29
 
-cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/next junio/notyet
+cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/notyet
 
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
