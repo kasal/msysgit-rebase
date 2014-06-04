@@ -117,7 +117,7 @@ mark hide-dotgit
 
 rewind hide-dotgit # mingw: add tests for the hidden attribute on the git directory
 pick 4fd0166 Add a Windows-specific fallback to getenv("HOME");
-#####U: submitted on 2014-06-04
+#####U: submitted on 2014-06-04 ==> discussion, %s/%s -> %s%s, otherwise kepp it as it is
 mark home
 
 # Branch: am-submodules
