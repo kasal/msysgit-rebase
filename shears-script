@@ -74,6 +74,7 @@ pick 8bb02cd Win32: move main macro to a function
 #####U: submitted 2014-05-01 as two patches in http://article.gmane.org/gmane.comp.version-control.msysgit/20136
 # the main(const argv) change shall be separated, Marat's version is nicer
 #####U: submitted again on 2014-05-29, together with a new const fix
+# (the const fix is not yet in msysgit/master)
 pick cca6498 MinGW: disable CRT command line globbing
 pick 10303bb Unicode console: fix font warning on Vista and Win7
 pick 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
@@ -116,7 +117,7 @@ mark hide-dotgit
 
 rewind hide-dotgit # mingw: add tests for the hidden attribute on the git directory
 pick 4fd0166 Add a Windows-specific fallback to getenv("HOME");
-#####U: drop the offset_1st func, it got there by mistake.
+#####U: submitted on 2014-06-04
 mark home
 
 # Branch: am-submodules
@@ -303,6 +304,8 @@ merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #12
 
 pick 4e64cd8 tests: turn off git-daemon tests if FIFOs are not available
 #####U: submitted immediately, 2014-05-29
+pick 0be03cb t5000, t5003: do not use test_cmp to compare binary files
+#####U: submitted immediately, 2014-06-04 (not yet in msysgit/master)
 
 cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/notyet
 
