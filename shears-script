@@ -71,6 +71,7 @@ pick 89b9445 Warn if the Windows console font doesn't support Unicode
 pick 336d506 Win32 dirent: remove unused dirent.d_ino member
 pick bac659a Win32 dirent: remove unused dirent.d_reclen member
 pick ee80482 Win32 dirent: change FILENAME_MAX to MAX_PATH
+#####U: this should be easy...
 pick 7844168 Win32 dirent: clarify #include directives
 pick ee70ba2 Win32 dirent: improve dirent implementation
 pick cf0cd42 Win32: fix potential multi-threading issue
@@ -109,7 +110,7 @@ pick 8c452ca Win32: use low-level memory allocation during initialization
 pick c614600 Win32: keep the environment sorted
 pick 84b7969 Win32: patch Windows environment on startup
 #####U: needs to be adapted, should also handle HOME, either by setenv(), or leaving it in mingw_getenv() wrapper
-# -> submit earlier than colour support
+# -> submit before the colour support
 pick 91db148 Win32: fix detection of empty directories in is_dir_empty
 pick d3910e1 Win32: fix broken pipe detection
 pick a5353bd Win32: fix segfault in WriteConsoleW when debugging in gdb
@@ -124,7 +125,7 @@ mark hide-dotgit
 
 rewind hide-dotgit # mingw: add tests for the hidden attribute on the git directory
 pick 4fd0166 Add a Windows-specific fallback to getenv("HOME");
-#####U: submitted on 2014-06-04, resubmitted 2014-06-05
+#####U: submitted on 2014-06-04, resubmitted 2014-06-05 --> [PATCH v3] is best
 mark home
 
 # Branch: am-submodules
