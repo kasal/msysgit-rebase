@@ -68,6 +68,10 @@ bud
 pick 64341b5 Support Unicode console output on Windows
 pick 232d19d Detect console streams more reliably on Windows
 pick 89b9445 Warn if the Windows console font doesn't support Unicode
+squash 10303bb Unicode console: fix font warning on Vista and Win7
+#####U: the commit message of this fix should actually become a comment...
+squash da58979 MSVC: fix winansi.c compile errors
+#####U: the commit message of this fix should actually become a comment...
 pick 336d506 Win32 dirent: remove unused dirent.d_ino member
 pick bac659a Win32 dirent: remove unused dirent.d_reclen member
 pick ee80482 Win32 dirent: change FILENAME_MAX to MAX_PATH
@@ -75,22 +79,28 @@ pick ee80482 Win32 dirent: change FILENAME_MAX to MAX_PATH
 pick 7844168 Win32 dirent: clarify #include directives
 pick ee70ba2 Win32 dirent: improve dirent implementation
 pick cf0cd42 Win32: fix potential multi-threading issue
+#####U: easy, self contained, SUBMIT
 pick 8bb02cd Win32: move main macro to a function
 #####U: submitted 2014-05-01 as two patches in http://article.gmane.org/gmane.comp.version-control.msysgit/20136
 # the main(const argv) change shall be separated, Marat's version is nicer
 #####U: submitted again on 2014-05-29, together with a new const fix
 # (the const fix is not yet in msysgit/master)
 pick cca6498 MinGW: disable CRT command line globbing
-pick 10303bb Unicode console: fix font warning on Vista and Win7
 pick 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
+#####U: well advocated and could be submitted now, submit together with the next one
 pick f967550 Revert "mingw.c: move definition of mingw_getenv down"
+#####U: submit together with the preceding one; the re-define patch avoids the need for mingw_getenv()
 pick 2755618 Enable color output in Windows cmd.exe
 #####U: rename term to "msys" or "cygwin"
-pick da58979 MSVC: fix winansi.c compile errors
 pick 4d5e2b3 Win32: Thread-safe windows console output
+squash a5353bd Win32: fix segfault in WriteConsoleW when debugging in gdb
+#####U: the commit message of this fix should actually become a comment...
 pick 64d5ed4 Win32: add Unicode conversion functions
 pick a4f9318 Win32: Unicode file name support (except dirent)
+squash 91db148 Win32: fix detection of empty directories in is_dir_empty
+#####U: the commit message of this fix should actually become a comment...
 pick 916cb22 Win32: Unicode file name support (dirent)
+#####U: perhaps this could be squashed with all the dirent mods above...
 pick dded4f2 Unicode file name support (gitk and git-gui)
 pick 020f167 Win32: Unicode arguments (outgoing)
 pick 867e81c Win32: Unicode arguments (incoming)
@@ -111,9 +121,7 @@ pick c614600 Win32: keep the environment sorted
 pick 84b7969 Win32: patch Windows environment on startup
 #####U: needs to be adapted, should also handle HOME, either by setenv(), or leaving it in mingw_getenv() wrapper
 # -> submit before the colour support
-pick 91db148 Win32: fix detection of empty directories in is_dir_empty
 pick d3910e1 Win32: fix broken pipe detection
-pick a5353bd Win32: fix segfault in WriteConsoleW when debugging in gdb
 mark unicode
 
 # Branch: hide-dotgit
@@ -319,3 +327,6 @@ cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-b
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
 
+# This can be done easily at any time:
+#pick cf0cd42 Win32: fix potential multi-threading issue
+#####U: easy, self contained, SUBMIT
