@@ -49,7 +49,7 @@ mark junio/notyet
 
 # - Some patches fix bugs that were introduced earlier, these could be squashed into the earlier commit.
 # E.g. "Unicode console: fix font warning on Vista and Win7", "MSVC: fix winansi.c compile errors"
-# or "Win32: fix segfault in WriteConsoleW when debugging in gdb".
+# or "Win32: fix segfault in WriteConsoleW when debugging in gdb".  [all three done]
 # Other fixes have sufficient gotchas/complexity that they should probably remain separate,
 # e.g. "Win32: fix broken pipe detection".
 
@@ -63,21 +63,28 @@ mark junio/notyet
 
 # /Karsten Blees writes:
 
+#### OK, I started mass mailing
+# 1) 2014-06-06 MASS unicode 0/5
+# 1v2) 2014-06-06 MASS unicode v2 0/6
+# 2) 2014-06-06 MASS dirent 0/5
+
+
 # Branch: unicode
 bud
 pick 64341b5 Support Unicode console output on Windows
+#####U: 2014-06-06 MASS unicode 1/6
 pick 232d19d Detect console streams more reliably on Windows
+#####U: 2014-06-06 MASS unicode 2/6
 pick 89b9445 Warn if the Windows console font doesn't support Unicode
 squash 10303bb Unicode console: fix font warning on Vista and Win7
-#####U: the commit message of this fix should actually become a comment...
 squash da58979 MSVC: fix winansi.c compile errors
-#####U: the commit message of this fix should actually become a comment...
+#####U: 2014-06-06 MASS unicode 3/6
 pick 336d506 Win32 dirent: remove unused dirent.d_ino member
 pick bac659a Win32 dirent: remove unused dirent.d_reclen member
 pick ee80482 Win32 dirent: change FILENAME_MAX to MAX_PATH
-#####U: this should be easy...
 pick 7844168 Win32 dirent: clarify #include directives
 pick ee70ba2 Win32 dirent: improve dirent implementation
+#####U: 2014-06-06 MASS dirent 1-5/5
 pick cf0cd42 Win32: fix potential multi-threading issue
 #####U: easy, self contained, SUBMIT
 pick 8bb02cd Win32: move main macro to a function
@@ -85,6 +92,7 @@ pick 8bb02cd Win32: move main macro to a function
 # the main(const argv) change shall be separated, Marat's version is nicer
 #####U: submitted again on 2014-05-29, together with a new const fix
 # (the const fix is not yet in msysgit/master)
+#####U: ... and again 2014-06-07 with (void*) const-fix
 pick cca6498 MinGW: disable CRT command line globbing
 #####U: easy, self contained, SUBMIT
 pick 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
@@ -92,11 +100,13 @@ pick 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
 pick f967550 Revert "mingw.c: move definition of mingw_getenv down"
 #####U: submit together with the preceding one; the re-define patch avoids the need for mingw_getenv()
 pick 2755618 Enable color output in Windows cmd.exe
-#####U: rename term to "msys" or "cygwin"
+#####U: rename term to "msys" or "cygwin" -- see Karsten's hints above
+pick 64d5ed4 Win32: add Unicode conversion functions
+#####U: 2014-06-06 MASS unicode 4/6
 pick 4d5e2b3 Win32: Thread-safe windows console output
 squash a5353bd Win32: fix segfault in WriteConsoleW when debugging in gdb
-#####U: the commit message of this fix should actually become a comment...
-pick 64d5ed4 Win32: add Unicode conversion functions
+squash 0f2f370 Win32: sync Unicode console output and file system
+#####U: 2014-06-06 MASS unicode 5/6
 pick a4f9318 Win32: Unicode file name support (except dirent)
 squash 91db148 Win32: fix detection of empty directories in is_dir_empty
 #####U: the commit message of this fix should actually become a comment...
@@ -105,7 +115,6 @@ pick 916cb22 Win32: Unicode file name support (dirent)
 pick dded4f2 Unicode file name support (gitk and git-gui)
 pick 020f167 Win32: Unicode arguments (outgoing)
 pick 867e81c Win32: Unicode arguments (incoming)
-pick 0f2f370 Win32: sync Unicode console output and file system
 pick d4f5975 Win32: Unicode environment (outgoing)
 pick 54fd715 Win32: Unicode environment (incoming)
 pick cc014c3 Win32: fix environment memory leaks
@@ -123,6 +132,7 @@ pick 84b7969 Win32: patch Windows environment on startup
 #####U: needs to be adapted, should also handle HOME, either by setenv(), or leaving it in mingw_getenv() wrapper
 # -> submit before the colour support
 pick d3910e1 Win32: fix broken pipe detection
+#####U: 2014-06-06 MASS unicode 6/6
 mark unicode
 
 # Branch: hide-dotgit
@@ -334,3 +344,9 @@ cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-b
 #####U: easy, self contained, SUBMIT
 #pick cca6498 MinGW: disable CRT command line globbing
 #####U: easy, self contained, SUBMIT
+
+# Other patches:
+#Subject: [PATCH v2] mingw: redefine the wrapper macro after the corresponding function
+#Date: Fri, 6 Jun 2014 10:41:22 +0200
+### discussed, rejected
+
