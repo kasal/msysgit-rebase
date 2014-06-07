@@ -9,19 +9,19 @@ bud
 pick 784f4b6 Update SVN.pm
 pick cbc60b6 git tag --contains : avoid stack overflow
 pick a08e803 MSVC: link dynamically to the CRT
+pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
+pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
+pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
 mark junio/master
 
 bud
-pick 76e7c8a Sleep 1 millisecond in poll() to avoid busy wait
-pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
 pick ccfb5bd wincred: add install target
 pick 248b68f wincred: avoid overwriting configured variables
-pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
 pick 6f5fc10 Windows: Allow using UNC path for git repository
+b93e6e3 t5000, t5003: do not use test_cmp to compare binary files
 mark junio/next
 
 bud
-b93e6e3 t5000, t5003: do not use test_cmp to compare binary files
 mark junio/pu
  
 bud
