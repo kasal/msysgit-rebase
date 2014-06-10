@@ -22,8 +22,25 @@ b93e6e3 t5000, t5003: do not use test_cmp to compare binary files
 mark junio/next
 
 bud
-# todo: the three mass submissions accepted
-mark junio/pu
+pick 1d94c40 Win32 dirent: remove unused dirent.d_ino member
+pick b0601e6 Win32 dirent: remove unused dirent.d_reclen member
+pick fa9abe9 Win32 dirent: change FILENAME_MAX to MAX_PATH
+pick a8248f4 Win32 dirent: clarify #include directives
+pick d8890ce Win32 dirent: improve dirent implementation
+mark junio/pu/sk/mingw-dirent
+
+bud
+pick 71bbe59 Win32: move main macro to a function
+pick de25062 mingw: avoid const warning
+mark junio/pu/sk/mingw-main
+
+pick 69f0747 Support Unicode console output on Windows
+pick 4ba31a2 Detect console streams more reliably on Windows
+pick 65602fc Warn if the Windows console font doesn't support Unicode
+pick aa71a59 Win32: add Unicode conversion functions
+pick 25d366b Win32: Thread-safe windows console output
+pick d3124b0 Win32: fix broken pipe detection
+mark junio/pu/sk/mingw-uni-console
  
 bud
 pick db40d88 Makefile: do not depend on curl-config
@@ -72,29 +89,10 @@ mark junio/notyet
 
 
 # Branch: unicode
-bud
-pick 64341b5 Support Unicode console output on Windows
-#####U: 2014-06-06 MASS unicode 1/6
-pick 232d19d Detect console streams more reliably on Windows
-#####U: 2014-06-06 MASS unicode 2/6
-pick 89b9445 Warn if the Windows console font doesn't support Unicode
-squash 10303bb Unicode console: fix font warning on Vista and Win7
-squash da58979 MSVC: fix winansi.c compile errors
-#####U: 2014-06-06 MASS unicode 3/6
-pick 336d506 Win32 dirent: remove unused dirent.d_ino member
-pick bac659a Win32 dirent: remove unused dirent.d_reclen member
-pick ee80482 Win32 dirent: change FILENAME_MAX to MAX_PATH
-pick 7844168 Win32 dirent: clarify #include directives
-pick ee70ba2 Win32 dirent: improve dirent implementation
-#####U: 2014-06-06 MASS dirent 1-5/5
+rewind junio/pu/sk/mingw-dirent
+merge refs/rewritten/junio/pu/sk/mingw-uni-console
 pick cf0cd42 Win32: fix potential multi-threading issue
 #####U: easy, self contained, SUBMIT
-pick 8bb02cd Win32: move main macro to a function
-#####U: submitted 2014-05-01 as two patches in http://article.gmane.org/gmane.comp.version-control.msysgit/20136
-# the main(const argv) change shall be separated, Marat's version is nicer
-#####U: submitted again on 2014-05-29, together with a new const fix
-# (the const fix is not yet in msysgit/master)
-#####U: ... and again 2014-06-07 with (void*) const-fix
 pick cca6498 MinGW: disable CRT command line globbing
 #####U: easy, self contained, SUBMIT
 pick 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
@@ -103,17 +101,9 @@ pick f967550 Revert "mingw.c: move definition of mingw_getenv down"
 #####U: submit together with the preceding one; the re-define patch avoids the need for mingw_getenv()
 pick 2755618 Enable color output in Windows cmd.exe
 #####U: rename term to "msys" or "cygwin" -- see Karsten's hints above
-pick 64d5ed4 Win32: add Unicode conversion functions
-#####U: 2014-06-06 MASS unicode 4/6
-pick 4d5e2b3 Win32: Thread-safe windows console output
-squash a5353bd Win32: fix segfault in WriteConsoleW when debugging in gdb
-squash 0f2f370 Win32: sync Unicode console output and file system
-#####U: 2014-06-06 MASS unicode 5/6
 pick a4f9318 Win32: Unicode file name support (except dirent)
 squash 91db148 Win32: fix detection of empty directories in is_dir_empty
-#####U: the commit message of this fix should actually become a comment...
 pick 916cb22 Win32: Unicode file name support (dirent)
-#####U: perhaps this could be squashed with all the dirent mods above...
 pick dded4f2 Unicode file name support (gitk and git-gui)
 pick 020f167 Win32: Unicode arguments (outgoing)
 pick 867e81c Win32: Unicode arguments (incoming)
@@ -133,8 +123,6 @@ pick c614600 Win32: keep the environment sorted
 pick 84b7969 Win32: patch Windows environment on startup
 #####U: needs to be adapted, should also handle HOME, either by setenv(), or leaving it in mingw_getenv() wrapper
 # -> submit before the colour support
-pick d3910e1 Win32: fix broken pipe detection
-#####U: 2014-06-06 MASS unicode 6/6
 mark unicode
 
 # Branch: hide-dotgit
@@ -336,7 +324,7 @@ merge refs/rewritten/kblees/kb/long-paths-v2 -C af30131 # Merge pull request #12
 pick 4e64cd8 tests: turn off git-daemon tests if FIFOs are not available
 #####U: submitted immediately, 2014-05-29
 
-cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/pu junio/notyet
+cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-branch git-gui gitk gitweb-syntax jberezanski/wincred-sso-r2 send-email pull-rebase-interactive some-CR-fixes win-tests-fixes remote-hg-prerequisites http-msys-paths fix-externals fix-is-exe msysgit/tip4commit kblees/kb/fscache-v4-tentative-1.8.5 kblees/kb/long-paths-v2 t-b/sideband-bug kasal/tests-no-posix junio/master junio/next junio/notyet junio/pu/sk/mingw-dirent junio/pu/sk/mingw-main junio/pu/sk/mingw-uni-console
 
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
