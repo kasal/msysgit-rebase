@@ -22,6 +22,7 @@ b93e6e3 t5000, t5003: do not use test_cmp to compare binary files
 mark junio/next
 
 bud
+# todo: the three mass submissions accepted
 mark junio/pu
  
 bud
@@ -64,6 +65,7 @@ mark junio/notyet
 # /Karsten Blees writes:
 
 #### OK, I started mass mailing
+# 0) main() macro + const-fix 0/2
 # 1) 2014-06-06 MASS unicode 0/5
 # 1v2) 2014-06-06 MASS unicode v2 0/6
 # 2) 2014-06-06 MASS dirent 0/5
