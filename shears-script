@@ -82,19 +82,30 @@ mark junio/notyet
 # /Karsten Blees writes:
 
 #### OK, I started mass mailing
-# 0) main() macro + const-fix 0/2
+# -1) main() macro + const-fix 0/2
+# 0) 2014-06-06 MASS dirent 0/5
 # 1) 2014-06-06 MASS unicode 0/5
 # 1v2) 2014-06-06 MASS unicode v2 0/6
-# 2) 2014-06-06 MASS dirent 0/5
 
-# 3) collection of details:
+# 2) collection of details:
 #1696d8d(dscho), fb4f2e2
 #cf0cd42
 #cca6498, 020f167, 867e81c
 #dded4f2 
 
-# 4) plan: all the env things...
+# 2a)
+#pick a4f9318 Win32: Unicode file name support (except dirent)
+#squash 91db148 Win32: fix detection of empty directories in is_dir_empty
+#pick 916cb22 Win32: Unicode file name support (dirent)
+
+# 3) plan: all the env things...
 # 9e573d9, d4f5975, etc.
+## eliminated: f967550, 290bf81
+
+# 4) - remaining things from unicode branch:
+#pick 2755618 Enable color output in Windows cmd.exe
+#####U: rename term to "msys" or "cygwin" -- see Karsten's hints above
+
 
 # Branch: unicode
 rewind junio/pu/sk/mingw-dirent
@@ -125,7 +136,10 @@ pick 1696d8d Let mingw_execve() return an int
 pick fb4f2e2 Win32: simplify internal mingw_spawn* APIs
 #####U: .. to this one, try to submit them independently.
 pick 290bf81 Win32: move environment functions
-#####U: make this a fixup for the above patches, the following ones probably as well...
+#####U: make this a fixup for the above patches,
+# - so that lookup_env+env_setenv (then renamed to lookupenv+do_putenv)
+#   get before make_environment_block (factored out from mingw_spawnve_fd)
+### alternatively, continue, adding a few fwd declarations...
 pick d876d6f Win32: unify environment function names
 pick 87ce73b Win32: factor out environment block creation
 pick 6c7a47c Win32: don't copy the environment twice when spawning child processes
