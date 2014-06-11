@@ -87,6 +87,14 @@ mark junio/notyet
 # 1v2) 2014-06-06 MASS unicode v2 0/6
 # 2) 2014-06-06 MASS dirent 0/5
 
+# 3) collection of details:
+#1696d8d(dscho), fb4f2e2
+#cf0cd42
+#cca6498, 020f167, 867e81c
+#dded4f2 
+
+# 4) plan: all the env things...
+# 9e573d9, d4f5975, etc.
 
 # Branch: unicode
 rewind junio/pu/sk/mingw-dirent
@@ -105,6 +113,7 @@ pick a4f9318 Win32: Unicode file name support (except dirent)
 squash 91db148 Win32: fix detection of empty directories in is_dir_empty
 pick 916cb22 Win32: Unicode file name support (dirent)
 pick dded4f2 Unicode file name support (gitk and git-gui)
+#####U: submit independently to let it be discussed...?
 pick 020f167 Win32: Unicode arguments (outgoing)
 pick 867e81c Win32: Unicode arguments (incoming)
 pick d4f5975 Win32: Unicode environment (outgoing)
