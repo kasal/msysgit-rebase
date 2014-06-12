@@ -355,12 +355,6 @@ cleanup  unicode hide-dotgit home am-submodules criss-cross-merge deny-current-b
 # TODO:
 # priv thread subj "submitting msysgit patches upstream"
 
-# These can be sent easily at any time:
-#pick cf0cd42 Win32: fix potential multi-threading issue
-#####U: easy, self contained, SUBMIT
-#pick cca6498 MinGW: disable CRT command line globbing
-#####U: easy, self contained, SUBMIT
-
 # Other patches:
 #Subject: [PATCH v2] mingw: redefine the wrapper macro after the corresponding function
 #Date: Fri, 6 Jun 2014 10:41:22 +0200
