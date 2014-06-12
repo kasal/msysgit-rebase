@@ -154,6 +154,7 @@ pick d876d6f Win32: unify environment function names
 pick 87ce73b Win32: factor out environment block creation
 pick 6c7a47c Win32: don't copy the environment twice when spawning child processes
 pick b2a0b39 Win32: reduce environment array reallocations
+#####U: beware, there is a fixup for this commit!
 pick 8c452ca Win32: use low-level memory allocation during initialization
 pick c614600 Win32: keep the environment sorted
 pick 84b7969 Win32: patch Windows environment on startup
@@ -322,6 +323,8 @@ pick aad2ca9 Add a test demonstrating a problem with long submodule paths
 pick 104d4e8 Win32: support long paths
 squash a15723c Win32: support long paths
 #####U: -> squashed version a0e78a5
+# conflicting test numbers t2025 t7410 -> rename (+1 is enough)
+# use the fixup from build-verify
 mark kblees/kb/long-paths-v2
 
 bud
