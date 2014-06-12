@@ -14,6 +14,15 @@ pick 0170a3c Revert "submodules: fix ambiguous absolute paths under Windows"
 pick f7febbe git grep -O -i: if the pager is 'less', pass the '-I' option
 mark junio/master
 
+# also in master
+# Branch: send-email
+bud
+#pick 22d3fab send-email: accept absolute path even on Windows
+#pick 31180f8 send-email: handle Windows paths for display just like we do for processing
+pick cb005c1
+pick f24ecf5
+mark send-email
+
 bud
 pick ccfb5bd wincred: add install target
 pick 248b68f wincred: avoid overwriting configured variables
@@ -120,6 +129,7 @@ pick f967550 Revert "mingw.c: move definition of mingw_getenv down"
 #####U: I cannot see any reason for this; if the following patches apply, ignore this.
 pick 2755618 Enable color output in Windows cmd.exe
 #####U: rename term to "msys" or "cygwin" -- see Karsten's hints above
+# CONFLICT - use the one from build-verify
 pick a4f9318 Win32: Unicode file name support (except dirent)
 squash 91db148 Win32: fix detection of empty directories in is_dir_empty
 pick 916cb22 Win32: Unicode file name support (dirent)
@@ -162,6 +172,7 @@ rewind hide-dotgit # mingw: add tests for the hidden attribute on the git direct
 pick 4fd0166 Add a Windows-specific fallback to getenv("HOME");
 #####U: submitted on 2014-06-04, resubmitted 2014-06-05 --> latest is [PATCH v3]
 #####U: will probably be rejected, which is not bad, as it interferes with 9e573d9 Revert "Windows: teach getenv to do a case-sensitive search"
+# CONFLICT - use the one from build-verify
 mark home
 
 # Branch: am-submodules
@@ -209,12 +220,6 @@ pick 122aa24 t0302: check helper can handle empty credentials
 pick 074bbc2 wincred: handle empty username/password correctly
 mark jberezanski/wincred-sso-r2
 
-# Branch: send-email
-bud
-pick 22d3fab send-email: accept absolute path even on Windows
-pick 31180f8 send-email: handle Windows paths for display just like we do for processing
-mark send-email
-
 # Branch: pull-rebase-interactive
 bud
 pick 31693eb Teach 'git pull' to handle --rebase=interactive
@@ -238,6 +243,7 @@ pick 86145eb Handle new t1501 test case properly with MinGW
 pick b9c78b0 MinGW: Skip test redirecting to fd 4
 pick bfc7b91 t3102: Windows filesystems may not use a literal asterisk in filenames.
 pick a9813b6 t9350: point out that refs are not updated correctly
+# CONFLICT - use the one from build-verify
 pick 44baaf9 MinGW: disable legacy encoding tests
 pick 7bfdba4 t1050: Fix invalid call to dd(1)
 pick 43660bc Work around a problem identified by BuildHive
@@ -247,6 +253,7 @@ pick 92e324a t800[12]: work around MSys limitation
 pick a0c3e15 t9902: mingw-specific fix for gitfile link files
 pick 986d2d4 Disable t0110's high-bit test on Windows
 pick ef4a733 tests: do not pass iso8859-1 encoded parameter
+# CONFLICT - use the one from build-verify
 mark win-tests-fixes
 
 # Branch: remote-hg-prerequisites
@@ -306,6 +313,7 @@ merge refs/rewritten/home -C 177f20e # Merge 'home' into HEAD
 #####U: when home is accepted, merge hide-dotgit?
 pick 658d848 add infrastructure for read-only file system level caches
 pick 738ce02 Win32: add a cache below mingw's lstat and dirent implementations
+# CONFLICT - use the one from build-verify
 mark kblees/kb/fscache-v4-tentative-1.8.5
 
 # Branch: kblees/kb/long-paths-v2
@@ -318,8 +326,8 @@ mark kblees/kb/long-paths-v2
 
 bud
 merge refs/rewritten/junio/master
+merge refs/rewritten/send-email -C ab62c69 # Merge 'send-email' into HEAD
 merge refs/rewritten/junio/next
-merge refs/rewritten/junio/pu
 merge refs/rewritten/junio/notyet
 merge refs/rewritten/unicode -C 547db2e # Merge 'unicode' into HEAD
 merge refs/rewritten/hide-dotgit -C 16180e4 # Merge 'hide-dotgit' into HEAD
@@ -332,7 +340,6 @@ merge refs/rewritten/git-gui -C 790f423 # Merge 'git-gui' into HEAD
 merge refs/rewritten/gitk -C 48e6355 # Merge 'gitk' into HEAD
 merge refs/rewritten/gitweb-syntax -C 6635333 # Merge 'gitweb-syntax' into HEAD
 merge refs/rewritten/jberezanski/wincred-sso-r2 -C 2398365 # Merge 'jberezanski/wincred-sso-r2' into HEAD
-merge refs/rewritten/send-email -C ab62c69 # Merge 'send-email' into HEAD
 merge refs/rewritten/pull-rebase-interactive -C 5322eac # Merge 'pull-rebase-interactive' into HEAD
 merge refs/rewritten/some-CR-fixes -C cbdee02 # Merge branch 'some-CR-fixes'
 merge refs/rewritten/win-tests-fixes -C acdd2fc # Merge 'win-tests-fixes' into HEAD
