@@ -101,6 +101,7 @@ mark junio/notyet
 #cf0cd42
 #cca6498, 020f167, 867e81c
 #dded4f2 
+#  --> accepted, except for dded4f2 - see Junio's answer
 
 # 2a)
 #pick a4f9318 Win32: Unicode file name support (except dirent)
