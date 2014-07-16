@@ -31,14 +31,6 @@ b93e6e3 t5000, t5003: do not use test_cmp to compare binary files
 mark junio/next
 
 bud
-pick 1d94c40 Win32 dirent: remove unused dirent.d_ino member
-pick b0601e6 Win32 dirent: remove unused dirent.d_reclen member
-pick fa9abe9 Win32 dirent: change FILENAME_MAX to MAX_PATH
-pick a8248f4 Win32 dirent: clarify #include directives
-pick d8890ce Win32 dirent: improve dirent implementation
-mark junio/pu/sk/mingw-dirent
-
-bud
 pick 71bbe59 Win32: move main macro to a function
 pick de25062 mingw: avoid const warning
 mark junio/pu/sk/mingw-main
@@ -50,7 +42,27 @@ pick aa71a59 Win32: add Unicode conversion functions
 pick 25d366b Win32: Thread-safe windows console output
 pick d3124b0 Win32: fix broken pipe detection
 mark junio/pu/sk/mingw-uni-console
+
+bud
+pick 1d94c40 Win32 dirent: remove unused dirent.d_ino member
+pick b0601e6 Win32 dirent: remove unused dirent.d_reclen member
+pick fa9abe9 Win32 dirent: change FILENAME_MAX to MAX_PATH
+pick a8248f4 Win32 dirent: clarify #include directives
+pick d8890ce Win32 dirent: improve dirent implementation
+mark junio/pu/sk/mingw-dirent
+
+#bud
+#pick fb4f2e2 Win32: simplify internal mingw_spawn* APIs
+#pick cf0cd42 Win32: fix potential multi-threading issue
+#pick cca6498 MinGW: disable CRT command line globbing
+#pick 020f167 Win32: Unicode arguments (outgoing)
+#pick 867e81c Win32: Unicode arguments (incoming)
+#mark junio/pu/sk/mingw-unicode-spawn-args
  
+#bud 2a) below
+
+#bud 2b: bug fixes switch off tests
+
 bud
 pick db40d88 Makefile: do not depend on curl-config
 #####U: junio is going to merge early in 2.1: http://article.gmane.org/gmane.comp.version-control.msysgit/20130
@@ -107,6 +119,8 @@ mark junio/notyet
 #pick a4f9318 Win32: Unicode file name support (except dirent)
 #squash 91db148 Win32: fix detection of empty directories in is_dir_empty
 #pick 916cb22 Win32: Unicode file name support (dirent)
+#plus "tests: do not pass iso8859-1 encoded parameter"
+# -- as a response to Hannes' complaint
 
 # 3) plan: all the env things...
 # 9e573d9, d4f5975, etc.
@@ -133,7 +147,9 @@ pick 2755618 Enable color output in Windows cmd.exe
 # CONFLICT - use the one from build-verify
 pick a4f9318 Win32: Unicode file name support (except dirent)
 squash 91db148 Win32: fix detection of empty directories in is_dir_empty
+#####U: submited on 2014-07-16, part of unicode-2a
 pick 916cb22 Win32: Unicode file name support (dirent)
+#####U: submited on 2014-07-16, part of unicode-2a
 pick dded4f2 Unicode file name support (gitk and git-gui)
 #####U: submit independently to let it be discussed...?
 pick 020f167 Win32: Unicode arguments (outgoing)
@@ -256,6 +272,7 @@ pick a0c3e15 t9902: mingw-specific fix for gitfile link files
 pick 986d2d4 Disable t0110's high-bit test on Windows
 pick ef4a733 tests: do not pass iso8859-1 encoded parameter
 # CONFLICT - use the one from build-verify
+#####U: submited on 2014-07-16, part of unicode-2a
 mark win-tests-fixes
 
 # Branch: remote-hg-prerequisites
