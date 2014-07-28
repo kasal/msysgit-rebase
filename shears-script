@@ -61,7 +61,11 @@ mark junio/pu/sk/mingw-dirent
  
 #bud 2a) below
 
-#bud 2b: bug fixes switch off tests
+#bud submit-up/win-tests-1
+
+#bud submit-up/unicode-3-v2
+# .. incl. the fixup from Karsten
+# (Only one remains from unicode branch: gitk/git-gui patch.)
 
 bud
 pick db40d88 Makefile: do not depend on curl-config
@@ -129,6 +133,8 @@ mark junio/notyet
 # 4) - remaining things from unicode branch:
 #pick 2755618 Enable color output in Windows cmd.exe
 #####U: rename term to "msys" or "cygwin" -- see Karsten's hints above
+#pick dded4f2 Unicode file name support (gitk and git-gui)
+#####U: submit both parts independently to appropriate people -- see mail from Junio
 
 
 # Branch: unicode
@@ -171,12 +177,10 @@ pick d876d6f Win32: unify environment function names
 pick 87ce73b Win32: factor out environment block creation
 pick 6c7a47c Win32: don't copy the environment twice when spawning child processes
 pick b2a0b39 Win32: reduce environment array reallocations
-#####U: beware, there is a fixup for this commit!
+#####U: beware, when rebasing, I screwed this --> fixup f9b41e9
 pick 8c452ca Win32: use low-level memory allocation during initialization
 pick c614600 Win32: keep the environment sorted
 pick 84b7969 Win32: patch Windows environment on startup
-#####U: needs to be adapted, should also handle HOME, either by setenv(), or leaving it in mingw_getenv() wrapper
-# -> submit before the colour support
 mark unicode
 
 # Branch: hide-dotgit
@@ -206,6 +210,7 @@ mark criss-cross-merge
 # Branch: deny-current-branch
 bud
 pick a8f8e59 Add a few more values for receive.denyCurrentBranch
+#####U: note: there is a fixup in build-verify branch
 pick 58a7344 Let deny.currentBranch=updateInstead ignore submodules
 mark deny-current-branch
 
@@ -259,17 +264,23 @@ bud
 pick 73fa916 work around misdetection of stdin attached to a tty
 pick 86145eb Handle new t1501 test case properly with MinGW
 pick b9c78b0 MinGW: Skip test redirecting to fd 4
+#####U: submited on 2014-07-17, submit-up/win-tests-1
 pick bfc7b91 t3102: Windows filesystems may not use a literal asterisk in filenames.
 pick a9813b6 t9350: point out that refs are not updated correctly
 # CONFLICT - use the one from build-verify
 pick 44baaf9 MinGW: disable legacy encoding tests
+#####U: submited on 2014-07-17, submit-up/win-tests-1
 pick 7bfdba4 t1050: Fix invalid call to dd(1)
 pick 43660bc Work around a problem identified by BuildHive
 pick 8d5bf41 t0008: avoid absolute path on Windows as colon is used in the tests
 pick 2c6d702 t4210: skip command-line encoding tests on mingw
+#####U: submited on 2014-07-17, submit-up/win-tests-1
 pick 92e324a t800[12]: work around MSys limitation
+#####U: submited on 2014-07-17, submit-up/win-tests-1, rewritten
 pick a0c3e15 t9902: mingw-specific fix for gitfile link files
+#####U: submited on 2014-07-17, submit-up/win-tests-1
 pick 986d2d4 Disable t0110's high-bit test on Windows
+#####U: submited on 2014-07-17, submit-up/win-tests-1
 pick ef4a733 tests: do not pass iso8859-1 encoded parameter
 # CONFLICT - use the one from build-verify
 #####U: submited on 2014-07-16, part of unicode-2a
